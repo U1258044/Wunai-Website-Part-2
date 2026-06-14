@@ -1,0 +1,52 @@
+/* CSS 樣式模組手冊手稿配置 */
+.glass-nav {
+    background-color: rgba(243, 242, 252, 0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 2px solid rgba(105, 68, 142, 0.15);
+}
+.active-gradient {
+    background: linear-gradient(135deg, #69448E 0%, #AC4FC6 100%);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #F3F2FC;
+}
+::-webkit-scrollbar-thumb {
+    background: #69448E;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #AC4FC6;
+}
+
+@keyframes drift {
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    33% { transform: translate3d(50px, -60px, 0) scale(1.15); }
+    66% { transform: translate3d(-40px, 40px, 0) scale(0.9); }
+    100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+.animate-slow-drift {
+    animation: drift 50s ease-in-out infinite;
+}
+.animate-slow-drift-delayed {
+    animation: drift 65s ease-in-out infinite 8s;
+}
+
+@keyframes waveMove {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+}
+@keyframes waveMoveRev {
+    0% { transform: translate3d(-50%, 0, 0); }
+    100% { transform: translate3d(0, 0, 0); }
+}
+
+.wave-flow-front {
+    animation: waveMove 38s linear infinite;
+}
+.wave-flow-back {
+    animation: waveMoveRev 48s linear infinite;
+}

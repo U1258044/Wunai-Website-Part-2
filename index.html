@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="zh-TW">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>塭內五行生態走廊 | Wennei Eco-Corridor &amp; Education</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ecoGreen: {
+                            light: '#F4F9EC', 
+                            DEFAULT: '#C9E5A1', 
+                            dark: '#4C612B',
+                        },
+                        oceanBlue: {
+                            light: '#F3F2FC', 
+                            DEFAULT: '#A7A4DF', 
+                            dark: '#3C3970',
+                        },
+                        brickRed: {
+                            light: '#F8F0FA', 
+                            DEFAULT: '#AC4FC6', 
+                            dark: '#581F66',
+                        },
+                        earthBrown: {
+                            light: '#F0ECF5', 
+                            DEFAULT: '#69448E', 
+                            dark: '#301844',
+                        },
+                        sunsetGold: {
+                            light: '#FFFDF2', 
+                            DEFAULT: '#FDEC7C', 
+                            dark: '#9E8D1A',
+                        },
+                        neutralBg: '#F3F2FC'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap');
+
+        .glass-nav {
+            background-color: rgba(243, 242, 252, 0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 2px solid rgba(105, 68, 142, 0.15);
+        }
+        .active-gradient {
+            background: linear-gradient(135deg, #69448E 0%, #AC4FC6 100%);
+        }
+        
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F3F2FC;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #69448E;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #AC4FC6;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased bg-gradient-to-b from-[#FAF8FC] via-[#F3F2FC] to-[#EAE6EE] text-slate-800 overflow-x-hidden">
+
+<header class="fixed top-0 left-0 right-0 z-40 glass-nav transition-all duration-300" id="mainHeader">
+    <div class="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto h-20 flex items-center justify-between">
+        <a class="flex items-center gap-2.5 group" href="#">
+            <div class="w-10 h-10 rounded-xl bg-[#69448E] flex items-center justify-center text-white transition-all duration-300 group-hover:rotate-12 group-hover:scale-110 active-gradient">
+                <i class="w-5 h-5" data-lucide="leaf"></i>
+            </div>
+            <div>
+                <span class="block text-xl font-black tracking-wide text-[#69448E] group-hover:text-[#AC4FC6] transition-colors duration-300">塭內五行生態走廊</span>
+                <span class="block text-[10px] font-bold tracking-widest text-slate-500 uppercase">Wennei Eco-Corridor</span>
+            </div>
+        </a>
+        <nav class="hidden lg:flex items-center gap-6">
+            <a class="text-sm font-black text-slate-700 hover:text-[#69448E] transition-colors duration-200" href="#hero">塭內印象</a>
+            <a class="text-sm font-black text-slate-700 hover:text-[#69448E] transition-colors duration-200" href="#geography">走進地理</a>
+            <a class="text-sm font-black text-slate-700 hover:text-[#69448E] transition-colors duration-200" href="#history">歲月記憶</a>
+            <a class="text-sm font-black text-slate-700 hover:text-[#69448E] transition-colors duration-200" href="#ecology">生態交響</a>
+            <a class="text-sm font-black text-[#AC4FC6] hover:text-[#69448E] transition-colors duration-200 flex items-center gap-1.5" href="#education">
+                <span class="relative flex h-2.5 w-2.5">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#AC4FC6] opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#AC4FC6]"></span>
+                </span>
+                特色教案
+            </a>
+            <a class="text-sm font-black text-slate-700 hover:text-[#69448E] transition-colors duration-200" href="#industry">特色產業</a>
+            <a class="text-sm font-black text-slate-700 hover:text-[#69448E] transition-colors duration-200" href="#vision">永續願景</a>
+            <button class="ml-4 px-5 py-2.5 rounded-full active-gradient text-white text-xs font-black tracking-wider hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5" onclick="openModal('pledge')">
+                參與低碳行動
+            </button>
+        </nav>
+        <button aria-label="Toggle Menu" class="lg:hidden p-2 rounded-lg text-[#69448E] hover:bg-[#F0ECF5] transition-colors" id="mobileMenuBtn">
+            <i class="w-6 h-6" data-lucide="menu" id="menuIcon"></i>
+        </button>
+    </div>
+    <div class="hidden border-t border-slate-200 bg-[#F3F2FC]/95 backdrop-blur-md px-6 py-4 space-y-3 shadow-inner" id="mobileMenu">
+        <a class="block py-2 text-base font-bold text-slate-700 hover:text-[#69448E]" href="#hero" onclick="closeMobileMenu()">塭內印象</a>
+        <a class="block py-2 text-base font-bold text-slate-700 hover:text-[#69448E]" href="#geography" onclick="closeMobileMenu()">走進地理</a>
+        <a class="block py-2 text-base font-bold text-slate-700 hover:text-[#69448E]" href="#history" onclick="closeMobileMenu()">歲月記憶</a>
+        <a class="block py-2 text-base font-bold text-slate-700 hover:text-[#69448E]" href="#ecology" onclick="closeMobileMenu()">生態交響</a>
+        <a class="block py-2 text-base font-black text-[#AC4FC6]" href="#education" onclick="closeMobileMenu()">特色教案 ★</a>
+        <a class="block py-2 text-base font-bold text-slate-700 hover:text-[#69448E]" href="#industry" onclick="closeMobileMenu()">特色產業</a>
+        <a class="block py-2 text-base font-bold text-slate-700 hover:text-[#69448E]" href="#vision" onclick="closeMobileMenu()">永續願景</a>
+        <button class="w-full mt-2 py-3 rounded-xl active-gradient text-white text-sm font-black tracking-wider" onclick="closeMobileMenu(); openModal('pledge')">
+            參與低碳行動
+        </button>
+    </div>
+</header>
+
+<section class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden bg-gradient-to-br from-[#2E1F47] via-[#1F1433] to-[#120921] text-white z-20" id="hero">
+    <div class="absolute inset-0 z-0 opacity-30 mix-blend-overlay">
+        <img src="官義渡生態公園.png" alt="中港溪出海口塭內夕陽" class="w-full h-full object-cover">
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center pb-40">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-8 transform hover:scale-105 transition-all duration-300">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#FDEC7C] animate-pulse"></span>
+            <span class="text-xs font-black tracking-wider uppercase text-[#FDEC7C]">苗栗竹南全國環境教育特優社區</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight max-w-5xl mx-auto mb-6">
+            河海交匯的綠色韌性<br/>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FDEC7C] via-[#C9E5A1] to-[#AC4FC6]">竹南塭內紫金社區</span>
+        </h1>
+        <p class="text-base sm:text-lg md:text-xl text-slate-200 max-w-3xl mx-auto mb-10 font-bold leading-relaxed">
+            在竹科竹南基地與工業擴張的夾縫中，塭內先民與志工攜手，將生態保育融入「在地感官體驗教案」，守護臺灣西部海岸最完整、獨一無二的「陸林灘水」共生廊道。
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a class="px-8 py-4 rounded-full active-gradient text-white text-base font-black hover:shadow-xl hover:shadow-purple-900/30 transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto" href="#geography">
+                探索生態地景
+            </a>
+            <a class="px-8 py-4 rounded-full bg-[#AC4FC6] hover:bg-opacity-90 text-white text-base font-black hover:shadow-xl transition-all duration-300 w-full sm:w-auto flex items-center justify-center gap-2" href="#education">
+                <i class="w-5 h-5" data-lucide="book-open"></i> 體驗互動環教教案
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="py-24 relative z-10" id="geography">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-xs font-black tracking-widest text-[#69448E] uppercase bg-[#F0ECF5] px-4 py-2 rounded-full">地理特徵與邊界梯度</span>
+            <h2 class="text-3xl sm:text-4xl font-black mt-4 text-[#301844]">走進地理 ── 塭內生態地理位置</h2>
+            <div class="w-16 h-1 bg-[#AC4FC6] mx-auto mt-4 rounded-full"></div>
+            <p class="text-slate-600 mt-4 font-bold leading-relaxed">
+                塭內社區地處中港溪出海口北側沖積平原，面積約175.11公頃。雖然國道三號與五福大橋帶來發達的聯外路網，卻也因高架道路阻隔而呈現地理空間的邊緣化。
+            </p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-5 space-y-6">
+                <div class="bg-white/80 p-6 rounded-2xl border border-purple-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-center gap-4 mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center text-[#A7A4DF]">
+                            <i class="w-5 h-5" data-lucide="map-pin"></i>
+                        </div>
+                        <h3 class="text-lg font-black text-[#69448E]">精確地理定位</h3>
+                    </div>
+                    <p class="text-sm text-slate-700 leading-relaxed font-bold">
+                        位於臺灣苗栗縣竹南鎮港墘里南緣（港墘里第10至13鄰），地理中心點：<span class="font-black text-[#69448E]">北緯24°40'18"、東經 120°51'03"</span>。其界限外圍皆未納入都市計劃區，完整保存了沿海生態的純粹性。
+                    </p>
+                </div>
+                <div class="bg-white/80 p-6 rounded-2xl border border-purple-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-center gap-4 mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center text-green-700">
+                            <i class="w-5 h-5" data-lucide="compass"></i>
+                        </div>
+                        <h3 class="text-lg font-black text-[#69448E]">邊界與外部網脈</h3>
+                    </div>
+                    <p class="text-sm text-slate-700 leading-relaxed font-bold">
+                        東起南北街與大厝里，西隔西濱快速道路（台61線）與臺灣海峽相望，北以竹南聯絡道與海口里相接，南則緊鄰中港溪北側沿岸，與造橋鄉及後龍鎮隔溪對望。
+                    </p>
+                </div>
+                <div class="bg-white/80 p-6 rounded-2xl border border-purple-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-center gap-4 mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center text-[#AC4FC6]">
+                            <i class="w-5 h-5" data-lucide="activity"></i>
+                        </div>
+                        <h3 class="text-lg font-black text-[#581F66]">高空下的美麗與孤立</h3>
+                    </div>
+                    <p class="text-sm text-slate-700 leading-relaxed font-bold">
+                        國道三號高架橋與五福大橋如長虹穿梭、聯絡四方，雖然提供了發達的外網，但在地理與社會感受上，高架橋與快速道路卻也宛若一道道物理藩籬，使社區在地理空間上呈現某種程度的邊緣化。
+                    </p>
+                </div>
+            </div>
+            <div class="lg:col-span-7 bg-white p-8 rounded-3xl border border-purple-200 shadow-xl relative overflow-hidden">
+                <h3 class="text-xl font-black mb-2 text-[#301844]">「陸—林—灘—水」生態梯度展示</h3>
+                <p class="text-xs text-slate-600 mb-8 font-black">請點擊下方刻度，感受自西向南、因風海交會形成的立體漸進生態系：</p>
+                <div class="flex flex-wrap items-center justify-between border-b border-slate-200 pb-4 mb-6 relative gap-2">
+                    <div class="absolute bottom-0 h-1 bg-[#69448E] rounded-full transition-all duration-500 hidden sm:block" id="gradientTracker" style="width: 25%; left: 0%;"></div>
+                    <button class="flex-1 text-center font-black text-sm text-[#69448E] pb-2 transition-colors relative focus:outline-none" onclick="switchGradient(0, this)">
+                        <span class="block text-xs text-slate-500 font-bold">第一梯度</span>陸 / 沙灘
+                    </button>
+                    <button class="flex-1 text-center font-black text-sm text-slate-400 pb-2 transition-colors relative focus:outline-none" onclick="switchGradient(1, this)">
+                        <span class="block text-xs text-slate-400 font-bold">第二梯度</span>林 / 保安林
+                    </button>
+                    <button class="flex-1 text-center font-black text-sm text-slate-400 pb-2 transition-colors relative focus:outline-none" onclick="switchGradient(2, this)">
+                        <span class="block text-xs text-slate-400 font-bold">第三梯度</span>灘 / 泥質潮間帶
+                    </button>
+                    <button class="flex-1 text-center font-black text-sm text-slate-400 pb-2 transition-colors relative focus:outline-none" onclick="switchGradient(3, this)">
+                        <span class="block text-xs text-slate-400 font-bold">第四梯度</span>水 / 河口
+                    </button>
+                </div>
+                <div class="min-h-[240px] bg-[#F3F2FC] rounded-2xl p-6 relative transition-all duration-300 border border-slate-200/50" id="gradientContent">
+                    <div class="flex flex-col justify-between h-full space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-amber-100 rounded-xl text-amber-800">
+                                <i class="w-6 h-6" data-lucide="sun"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-black text-slate-800">【陸/灘】西側沙質海岸與馬鞍藤</h4>
+                                <p class="text-sm text-slate-600 mt-2 leading-relaxed font-bold">
+                                    西側直接承受強烈鹹風，沙地乾燥多鹽。這裡爬滿了防沙先驅植被「馬鞍藤」，其鞍形厚葉能降低蒸散，並綻放紫色漏斗狀花朵。它是保護內陸免遭風沙與潮水肆虐的首道防線。
+                                </p>
+                            </div>
+                        </div>
+                        <div class="border-t border-slate-200 pt-4 flex items-center justify-between">
+                            <span class="text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded">沙質、強海風</span>
+                            <span class="text-xs text-slate-500 font-extrabold">生態位置：西側最外緣</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="rounded-2xl overflow-hidden h-32 relative shadow-md">
+                        <img src="官義渡生態公園.png" alt="官義渡生態公園" class="w-full h-full object-cover">
+                        <div class="absolute bottom-2 right-2 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded font-black">實景：官義渡生態公園</div>
+                    </div>
+                    <div class="rounded-2xl overflow-hidden h-32 relative shadow-md">
+                        <img src="台灣招潮蟹.jpg" alt="塭內泥質潮間帶招潮蟹實景" class="w-full h-full object-cover">
+                        <div class="absolute bottom-2 right-2 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded font-black">實景：台灣招潮蟹</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-24 bg-gradient-to-br from-[#FAF3E5] to-[#FAF8FC] relative border-y border-amber-900/10" id="history">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-xs font-black tracking-widest text-[#AC4FC6] uppercase bg-purple-100 px-4 py-2 rounded-full">人文底蘊與聚落記憶</span>
+            <h2 class="text-3xl sm:text-4xl font-black mt-4 text-[#581F66]">歲月記憶 ── 葉家庄與古渡口</h2>
+            <div class="w-16 h-1 bg-[#FDEC7C] mx-auto mt-4 rounded-full"></div>
+            <p class="text-slate-600 mt-4 font-bold leading-relaxed">
+                自清朝以來，先民築堤防海、漁撈為生。這裡不僅是凝聚家族倫理的同姓聚落「葉家庄」，也是凝聚中港溪出海口信仰的歷史重鎮。
+            </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
+            <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 group hover:-translate-y-1 flex flex-col justify-between">
+                <div>
+                    <div class="w-full h-56 rounded-2xl overflow-hidden mb-6 shadow-md relative">
+                        <img alt="塭內德勝宮正面照" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="德勝宮正面照.png"/>
+                    </div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="px-2.5 py-1 rounded bg-[#FDEC7C] text-slate-800 text-[10px] font-black">宗教信仰</span>
+                        <h3 class="text-lg font-black text-[#69448E]">塭內德勝宮 ── 信仰與百年奇蹟</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 leading-relaxed font-bold mb-4">
+                        德勝宮創建於清同治九年（1870年），主祀朱、李、池三府王爺，是葉氏宗族「葉家庄」的信仰核心。1943年（昭和18年）中港溪口發生巨鯨擱淺，三王爺鑾乩顯靈警告庄民勿搭船出海，使庄民幸免於隨後發生的32人沉船溺斃慘劇。這段歷史深深烙印在塭內先民的記憶中。
+                    </p>
+                </div>
+                <a class="text-xs font-black text-[#69448E] hover:text-[#AC4FC6] flex items-center gap-1 mt-2" href="https://zh.wikipedia.org/zh-tw/%E5%A1%AD%E5%85%A7%E5%BE%B7%E5%8B%9D%E5%AE%AE" target="_blank">歷史文獻記載 <i class="w-4 h-4" data-lucide="arrow-up-right"></i></a>
+            </div>
+
+            <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 group hover:-translate-y-1 flex flex-col justify-between">
+                <div>
+                    <div class="w-full h-56 rounded-2xl overflow-hidden mb-6 shadow-md relative">
+                        <img alt="中港溪官義渡與紅樹林生態" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="官義渡生態公園.png"/>
+                    </div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="px-2.5 py-1 rounded bg-slate-100 text-[#3C3970] text-[10px] font-black">河港故事</span>
+                        <h3 class="text-lg font-black text-[#69448E]">官義渡生態公園 ── 百年義渡碑</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 leading-relaxed font-bold mb-4">
+                        官義渡生態公園佔地約5公頃，保留了臺灣西部少數完整的大型水筆仔紅樹林。此處立有清道光十六年（1836年）淡水廳同知婁雲所設的「中港溪官義渡碑」複製品。當時因應中港溪水流湍急且械鬥頻繁，特設官船免費擺渡，以促進地方和平與交通往來，見證了地方交通的變遷。
+                    </p>
+                </div>
+                <a class="text-xs font-black text-[#69448E] hover:text-[#AC4FC6] flex items-center gap-1 mt-2" href="#geography">探索河口水域 <i class="w-4 h-4" data-lucide="arrow-down"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-24 relative z-10" id="ecology">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-xs font-black tracking-widest text-[#69448E] uppercase bg-purple-100 px-4 py-2 rounded-full">生態保育與生命交響</span>
+            <h2 class="text-3xl sm:text-4xl font-black mt-4 text-[#301844]">生態交響 ── 1311保安林與斯氏紫斑蝶</h2>
+            <div class="w-16 h-1 bg-[#C9E5A1] mx-auto mt-4 rounded-full"></div>
+            <p class="text-slate-600 mt-4 font-bold leading-relaxed">
+                塭內社區管轄的「1311號保安林」，是全臺灣第一個被證實的斯氏紫斑蝶春季繁殖與育雛熱點，這裡孕育著無數斑蝶後代的搖籃。
+            </p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <div class="p-6 bg-white rounded-2xl border border-purple-100 shadow-sm">
+                    <h3 class="text-lg font-black text-[#69448E] mb-2">尋覓「羊角藤」 ── 紫斑蝶幼蟲唯一食草</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed font-bold">
+                        斯氏紫斑蝶每年春季北返時，會飛抵塭內保安林，尋找攀附在木麻黃樹幹上的「羊角藤」（夾竹桃科藤本植物）並於葉片上產卵。這是牠們孕育下一代最重要的食草。社區志工與臺灣紫斑蝶生態保育協會攜手，每年在此進行精細的族群與食草調查。
+                    </p>
+                </div>
+                <div class="p-6 bg-white rounded-2xl border border-purple-100 shadow-sm">
+                    <h3 class="text-lg font-black text-[#69448E] mb-2">守護「生態老闆」 ── 社區巡守與企業協作</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed font-bold">
+                        為了保護紫斑蝶，每年3至6月期間，社區巡守隊實施「不除草政策」，保留大花咸豐草等蜜源，並聯合杜邦、環球晶圓等企業，定期清除大黍、小花蔓澤蘭等外來入侵攀藤，補植臭娘子、台灣赤楠、白水木等原生蜜源植物，確保「生態老闆」年年如期造訪。
+                    </p>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-3xl border border-purple-100 shadow-xl">
+                <div class="w-full h-80 rounded-2xl overflow-hidden mb-4 shadow-inner relative">
+                    <img src="斯氏紫斑蝶雄蝶背面展翅實照.jpg" alt="斯氏紫斑蝶生態" class="w-full h-full object-cover">
+                    <div class="absolute bottom-2 right-2 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded font-black">實景：斯氏紫斑蝶雄蝶</div>
+                </div>
+                <span class="text-xs bg-[#C9E5A1] text-slate-800 px-3 py-1 rounded-full font-black">森林走廊 ─ 紫斑蝶保育棲地</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-24 bg-gradient-to-br from-[#1E1135] to-[#0A051A] text-white relative z-10" id="education">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-5 space-y-6">
+                <span class="text-xs font-black tracking-widest text-[#FDEC7C] uppercase bg-white/10 px-4 py-2 rounded-full border border-white/10">低碳感官教育</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white">特色教案 ─ 喚醒全身感官的環境教育</h2>
+                <p class="text-sm text-slate-300 leading-relaxed font-bold">
+                    塭內社區不論獲選為「國家環境教育獎特優」，更將生態防護轉化為具備高度互動性的低碳教案。我們將紫斑蝶的生態轉化為美麗的手創工藝——「飛天蝴蝶」！
+                </p>
+                <div class="border-l-4 border-[#FDEC7C] pl-4 space-y-2">
+                    <p class="text-xs text-slate-300 font-bold">
+                        "透過手作飛天蝴蝶，我們能用不一樣的方式宣導紫斑蝶的生命軌跡與海岸林的保護！" <br/>
+                        <span class="text-[#FDEC7C] font-black">— 塭內環教志工</span>
+                    </p>
+                </div>
+                <div class="pt-4">
+                    <button class="px-6 py-3.5 bg-[#FDEC7C] hover:bg-opacity-90 text-slate-900 rounded-full font-black text-sm transition-all duration-300 shadow-lg" onclick="openModal('pledge')">
+                        線上預約體驗教案
+                    </button>
+                </div>
+            </div>
+            <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10 space-y-4 hover:bg-white/10 transition-colors">
+                    <div class="w-10 h-10 rounded-xl bg-purple-500/30 flex items-center justify-center text-purple-300">
+                        <i class="w-5 h-5" data-lucide="scissors"></i>
+                    </div>
+                    <h3 class="text-base font-black text-white">【紫在塭內】飛天蝴蝶 DIY</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed font-bold">
+                        利用環保紙材與創意設計，在解說長輩帶領下親手製作栩栩如生的「飛天蝴蝶」，深入認識斯氏紫斑蝶的翅膀構造與北返繁衍的艱辛生態故事。
+                    </p>
+                </div>
+                <div class="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10 space-y-4 hover:bg-white/10 transition-colors">
+                    <div class="w-10 h-10 rounded-xl bg-sunsetGold/30 flex items-center justify-center text-[#FDEC7C]">
+                        <i class="w-5 h-5" data-lucide="footprints"></i>
+                    </div>
+                    <h3 class="text-base font-black text-white">【有夠水】潮間帶探險</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed font-bold">
+                        親臨官義渡生態公園，走入紅樹林深處的泥質灘地，親眼觀察招潮蟹揮螯挖掘，並聆聽大河戀自行車道畔潮汐起落的生態旋律。
+                    </p>
+                </div>
+                <div class="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10 space-y-4 hover:bg-white/10 transition-colors">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/30 flex items-center justify-center text-emerald-300">
+                        <i class="w-5 h-5" data-lucide="eye"></i>
+                    </div>
+                    <h3 class="text-base font-black text-white">【斑蝶尋蹤】生態普查</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed font-bold">
+                        跟隨解說志工深入1311號保安林，手持標記工具，學習如何辨識羊角藤植株並調查斯氏紫斑蝶的生態狀況，親身體驗環境巡護工作。
+                    </p>
+                </div>
+                <div class="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10 space-y-4 hover:bg-white/10 transition-colors">
+                    <div class="w-10 h-10 rounded-xl bg-rose-500/30 flex items-center justify-center text-rose-300">
+                        <i class="w-5 h-5" data-lucide="recycle"></i>
+                    </div>
+                    <h3 class="text-base font-black text-white">【生活美學】海廢與漂流木創作</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed font-bold">
+                        將海岸淨灘中回收的碎玻璃、貝殼與枯枝漂流木加以清理，經過加工改造成獨一無二的「試管芳香花瓶」，為海廢危機提供永續的美學解方。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-24 relative z-10" id="industry">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-xs font-black tracking-widest text-[#69448E] uppercase bg-purple-100 px-4 py-2 rounded-full">在地風土與綠色文創</span>
+            <h2 class="text-3xl sm:text-4xl font-black mt-4 text-[#301844]">特色產業與綠色商品</h2>
+            <div class="w-16 h-1 bg-[#FDEC7C] mx-auto mt-4 rounded-full"></div>
+            <p class="text-slate-600 mt-4 font-bold leading-relaxed">
+                透過社區媽媽與環教志工的巧手，我們將特色生態元素融入商品中。您的每一次購買，都將全數投入塭內社區的紫斑蝶棲地保育與弱勢長者照顧基金。
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white rounded-3xl border border-purple-100 p-5 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                    <div class="w-full h-56 rounded-2xl overflow-hidden mb-4 relative bg-slate-50">
+                        <img src="紫斑蝶立體花茶包%20(2).png" alt="紫在塭內特色天然花茶" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <h3 class="text-lg font-black text-[#69448E] mb-1">【紫在塭內】特色天然花茶</h3>
+                    <p class="text-xs text-slate-600 font-bold leading-relaxed mb-4">
+                        精選社區友善溫室種植的紫色草本花卉，搭配特製蝶形吊牌設計。富含天然花青素，茶湯溫潤浪漫。
+                    </p>
+                </div>
+                <div class="flex items-center justify-between border-t border-slate-100 pt-4">
+                    <span class="text-lg font-black text-slate-800">NT$ 280</span>
+                    <button onclick="addToCart('p1', '【紫在塭內】特色天然花茶', 280, '紫斑蝶立體花茶包%20(2).png')" class="px-4 py-2.5 rounded-full bg-[#69448E] hover:bg-[#AC4FC6] text-white text-xs font-black transition-colors flex items-center gap-1">
+                        <i class="w-3.5 h-3.5" data-lucide="shopping-cart"></i> 加入購物車
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl border border-purple-100 p-5 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                    <div class="w-full h-56 rounded-2xl overflow-hidden mb-4 relative bg-slate-50">
+                        <img src="試管芳香瓶.png" alt="海廢再生漂流木試管芳香瓶" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <h3 class="text-lg font-black text-[#69448E] mb-1">海廢再生漂流木試管芳香瓶</h3>
+                    <p class="text-xs text-slate-600 font-bold leading-relaxed mb-4">
+                        收集自竹南濱海淨灘所得的天然原木枯枝，結合打磨光滑的海廢玻璃與木質蝴蝶翅膀基座，點綴出原創綠色美學。
+                    </p>
+                </div>
+                <div class="flex items-center justify-between border-t border-slate-100 pt-4">
+                    <span class="text-lg font-black text-slate-800">NT$ 450</span>
+                    <button onclick="addToCart('p2', '海廢再生漂流木試管芳香瓶', 450, '試管芳香瓶.png')" class="px-4 py-2.5 rounded-full bg-[#69448E] hover:bg-[#AC4FC6] text-white text-xs font-black transition-colors flex items-center gap-1">
+                        <i class="w-3.5 h-3.5" data-lucide="shopping-cart"></i> 加入購物車
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl border border-purple-100 p-5 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                    <div class="w-full h-56 rounded-2xl overflow-hidden mb-4 relative bg-slate-50">
+                        <img src="飛天蝴蝶.png" alt="飛天蝴蝶 DIY 體驗套組" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <h3 class="text-lg font-black text-[#69448E] mb-1">飛天蝴蝶 DIY 體驗套組</h3>
+                    <p class="text-xs text-slate-600 font-bold leading-relaxed mb-4">
+                        包含全彩細緻印刷的斑蝶翅膀與動力發條結構，配備精美組裝環教手冊，帶給孩子滿滿的手作樂趣。
+                    </p>
+                </div>
+                <div class="flex items-center justify-between border-t border-slate-100 pt-4">
+                    <span class="text-lg font-black text-slate-800">NT$ 150</span>
+                    <button onclick="addToCart('p3', '飛天蝴蝶 DIY 體驗套組', 150, '飛天蝴蝶.png')" class="px-4 py-2.5 rounded-full bg-[#69448E] hover:bg-[#AC4FC6] text-white text-xs font-black transition-colors flex items-center gap-1">
+                        <i class="w-3.5 h-3.5" data-lucide="shopping-cart"></i> 加入購物車
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-24 bg-[#EAE6EE]/60 border-t border-[#69448E]/10" id="vision">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl">
+        <span class="text-xs font-black tracking-widest text-[#69448E] uppercase bg-purple-100 px-4 py-2 rounded-full">環境共生，永續不息</span>
+        <h2 class="text-3xl sm:text-4xl font-black mt-4 text-[#301844]">守護塭內，攜手前行</h2>
+        <div class="w-16 h-1 bg-[#FDEC7C] mx-auto mt-4 rounded-full"></div>
+        <p class="text-sm text-slate-600 mt-6 leading-relaxed font-black max-w-2xl mx-auto">
+            塭內社區曾獲國家環境教育獎特優、第一屆金牌農村銅牌等無上殊榮。我們期許自己不只是歷史的守護者，更是未來生態文明的開拓者，讓紫斑蝶年年在此繁衍，讓中港溪水永遠清澈。
+        </p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <button class="px-8 py-4 rounded-full active-gradient text-white text-base font-black hover:shadow-xl transition-all duration-300" onclick="openModal('pledge')">
+                承諾參與低碳旅遊
+            </button>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-[#301844] text-white py-16 border-t border-purple-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12 border-b border-white/10 pb-12">
+            <div class="space-y-4">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
+                        <i class="w-4 h-4 text-[#FDEC7C]" data-lucide="leaf"></i>
+                    </div>
+                    <span class="text-lg font-black">塭內五行生態走廊</span>
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed font-bold">
+                    融合環境教育，攜手企業、居民、學校，開創農村再生新典範，維護西部海岸最迷人的自然淨土。
+                </p>
+            </div>
+            <div class="space-y-4">
+                <h3 class="text-sm font-black tracking-widest text-slate-200 uppercase">快速連結</h3>
+                <div class="grid grid-cols-2 gap-2 text-xs font-bold text-slate-300">
+                    <a class="hover:text-white" href="#hero">塭內印象</a>
+                    <a class="hover:text-white" href="#geography">走進地理</a>
+                    <a class="hover:text-white" href="#history">歲月記憶</a>
+                    <a class="hover:text-white" href="#ecology">生態交響</a>
+                    <a class="hover:text-white" href="#industry">特色產業</a>
+                    <a class="hover:text-white" href="#vision">永續願景</a>
+                </div>
+            </div>
+            <div class="space-y-4 text-xs font-bold text-slate-300">
+                <h3 class="text-sm font-black tracking-widest text-[#FDEC7C] uppercase">社區資訊</h3>
+                <p class="flex items-center gap-2"><i class="w-4 h-4" data-lucide="map-pin"></i> 苗栗縣竹南鎮港墘里塭內12鄰32號之1 </p>
+                <p class="flex items-center gap-2"><i class="w-4 h-4" data-lucide="phone"></i> 03-747-7748 </p>
+                <p class="flex items-center gap-2"><i class="w-4 h-4" data-lucide="mail"></i> info@wennei-eco.org.tw</p>
+            </div>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400">
+            <p>© 2026 塭內五行生態走廊. All rights reserved.</p>
+            <p class="mt-2 sm:mt-0">苗栗縣環保績優低碳社區 / 國家環境教育獎特優</p>
+        </div>
+    </div>
+</footer>
+
+<div id="cart-floating-btn" class="fixed bottom-6 right-6 z-30">
+    <button onclick="toggleCart()" class="relative p-4 rounded-full bg-[#69448E] text-white shadow-xl hover:bg-[#AC4FC6] hover:scale-110 transition-all duration-300">
+        <i data-lucide="shopping-cart" class="w-6 h-6"></i>
+        <span id="cart-count" class="absolute -top-1 -right-1 bg-purple-600 text-white text-xs font-bold px-2 py-0.5 rounded-full hidden">0</span>
+    </button>
+</div>
+
+<div id="cart-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300" onclick="toggleCart()"></div>
+
+<div id="cart-sidebar" class="fixed inset-y-0 right-0 w-full sm:w-96 bg-[#F3F2FC] shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col border-l border-purple-200">
+    <div class="p-6 border-b border-purple-100 flex items-center justify-between bg-[#69448E] text-white">
+        <h3 class="text-lg font-black flex items-center gap-2">
+            <i data-lucide="shopping-cart" class="w-5 h-5"></i> 您的購物車
+        </h3>
+        <button onclick="toggleCart()" class="p-1 rounded-full hover:bg-white/10 transition-colors">
+            <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+    </div>
+    <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+        <div id="empty-cart-state" class="text-center py-12 text-slate-500">
+            <i data-lucide="shopping-bag" class="w-12 h-12 mx-auto mb-3 opacity-40"></i>
+            <p class="font-bold">您的購物車目前是空的</p>
+        </div>
+    </div>
+    <div class="p-6 border-t border-purple-100 bg-white space-y-4">
+        <div class="flex items-center justify-between text-base font-black text-slate-800">
+            <span>總計金額</span>
+            <span id="cart-total">NT$ 0</span>
+        </div>
+        <button class="w-full py-3 bg-[#69448E] hover:bg-[#AC4FC6] text-white rounded-xl font-bold transition-colors shadow-md flex items-center justify-center gap-2">
+            <i data-lucide="credit-card" class="w-5 h-5"></i> 進行結帳
+        </button>
+    </div>
+</div>
+
+<div class="fixed inset-0 z-50 overflow-y-auto hidden" id="pledgeModal">
+    <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+        <div class="fixed inset-0 transition-opacity" onclick="closeModal('pledge')">
+            <div class="absolute inset-0 bg-slate-900 opacity-75"></div>
+        </div>
+        <span class="hidden sm:inline-block sm:align-middle sm:h-screen">​</span>
+        <div class="inline-block align-middle bg-[#F3F2FC] rounded-3xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full border border-purple-200">
+            <div class="bg-[#69448E] px-6 py-4 flex items-center justify-between text-white">
+                <h3 class="text-lg font-black">參與塭內低碳旅遊承諾</h3>
+                <button class="text-white" onclick="closeModal('pledge')"><i class="w-6 h-6" data-lucide="x"></i></button>
+            </div>
+            <div class="px-6 py-6 space-y-4">
+                <p class="text-sm font-bold text-slate-700 leading-relaxed">
+                    歡迎您加入塭內綠色保育的行列！請勾選您的環保承諾項目，完成承諾即享現場文創體驗優惠折抵。
+                </p>
+                <div class="space-y-3 font-bold text-xs text-slate-800">
+                    <label class="flex items-center gap-3 p-3 bg-white rounded-xl border border-purple-200 shadow-sm transition-colors cursor-pointer">
+                        <input class="w-4 h-4 text-purple rounded" type="checkbox"/>
+                        <span>自備環保餐具與水壺，謝絕一次性塑膠製品</span>
+                    </label>
+                    <label class="flex items-center gap-3 p-3 bg-white rounded-xl border border-purple-200 shadow-sm transition-colors cursor-pointer">
+                        <input class="w-4 h-4 text-purple rounded" type="checkbox"/>
+                        <span>搭乘公共大眾運輸或以綠色單車漫遊保安林步道</span>
+                    </label>
+                    <label class="flex items-center gap-3 p-3 bg-white rounded-xl border border-purple-200 shadow-sm transition-colors cursor-pointer">
+                        <input class="w-4 h-4 text-purple rounded" type="checkbox"/>
+                        <span>尊重在地動植物，絕不干擾紫斑蝶及招潮蟹生息</span>
+                    </label>
+                </div>
+                <div class="pt-4 flex gap-4">
+                    <button class="flex-1 py-3 bg-[#69448E] hover:bg-[#AC4FC6] text-white rounded-xl font-black text-sm shadow-md transition-colors" onclick="submitPledge()">
+                        送出承諾
+                    </button>
+                    <button class="flex-1 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-xl font-black text-sm transition-colors" onclick="closeModal('pledge')">
+                        取消
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    lucide.createIcons();
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuIcon = document.getElementById('menuIcon');
+
+    if(mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.setAttribute('data-lucide', 'x');
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        });
+    }
+
+    function closeMobileMenu() {
+        mobileMenu.classList.add('hidden');
+        menuIcon.setAttribute('data-lucide', 'menu');
+        lucide.createIcons();
+    }
+
+    function openModal(id) {
+        if(id === 'pledge') {
+            document.getElementById('pledgeModal').classList.remove('hidden');
+        }
+    }
+
+    function closeModal(id) {
+        if(id === 'pledge') {
+            document.getElementById('pledgeModal').classList.add('hidden');
+        }
+    }
+
+    function submitPledge() {
+        alert('感謝您的綠色承諾！您的優惠碼為：WENNEI_ECO_2026。');
+        closeModal('pledge');
+    }
+
+    const gradientContents = [
+        {
+            title: "【陸/沙灘】西側沙質海岸與馬鞍藤",
+            desc: "西側直接承受強烈鹹風，沙地乾燥多鹽。這裡爬滿了防沙先驅植被「馬鞍藤」，其鞍形厚葉能降低蒸散，並綻放紫色漏斗狀花朵。它是保護內陸免遭風沙與潮水肆虐的首道防線。",
+            tag: "沙質、強海風",
+            pos: "生態位置：西側最外緣",
+            icon: "sun"
+        },
+        {
+            title: "【林/保安林】1311號防風綠色長廊",
+            desc: "由高大的木麻黃與羊角藤組成，是全台灣首個被證實的斯氏紫斑蝶春季繁殖熱點。這條天然防風綠帶有效阻擋強烈東北季風，穩固沙丘並提供溫暖多樣的庇護所。",
+            tag: "木麻黃、羊角藤",
+            pos: "生態位置：中部陸林帶",
+            icon: "tree-pine"
+        },
+        {
+            title: "【灘/潮間帶】中港溪北岸泥質灘地",
+            desc: "出海口附近的大片泥質灘地，每日潮汐往返積聚了大量有機物。這裡是招潮蟹的樂園，上百萬隻不同品種的招潮蟹在此揮螯覓食，展示著旺盛的生命力。",
+            tag: "泥質、鹽沼濕地",
+            pos: "生態位置：高潮線以下潮間帶",
+            icon: "activity"
+        },
+        {
+            title: "【水/河口】官義渡紅樹林水域",
+            desc: "位於中港溪與射流溪的交會處，淡海水激烈混合。這裡是臺灣少數保留完整的水筆仔林地，不僅是海鳥和過境候鳥的極佳覓食地，幕後更維護著海洋生態鏈。",
+            tag: "水筆仔、淡海水",
+            pos: "生態位置：出海口核心水域",
+            icon: "waves"
+        }
+    ];
+
+    function switchGradient(index, btn) {
+        const tracker = document.getElementById('gradientTracker');
+        if (tracker) {
+            tracker.style.left = `${index * 25}%`;
+        }
+
+        const buttons = btn.parentElement.querySelectorAll('button');
+        buttons.forEach(b => {
+            b.classList.remove('text-[#69448E]');
+            b.classList.add('text-slate-400');
+            b.querySelector('span').classList.remove('text-slate-500');
+            b.querySelector('span').classList.add('text-slate-400');
+        });
+        btn.classList.add('text-[#69448E]');
+        btn.classList.remove('text-slate-400');
+        btn.querySelector('span').classList.add('text-slate-500');
+        btn.querySelector('span').classList.remove('text-slate-400');
+
+        const contentBox = document.getElementById('gradientContent');
+        contentBox.style.opacity = '0';
+        setTimeout(() => {
+            const data = gradientContents[index];
+            contentBox.innerHTML = `
+                <div class="flex flex-col justify-between h-full space-y-4">
+                    <div class="flex items-start gap-4">
+                        <div class="p-3 bg-slate-100 rounded-xl text-[#69448E]">
+                            <i class="w-6 h-6" data-lucide="${data.icon}"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-black text-slate-800">${data.title}</h4>
+                            <p class="text-sm text-slate-600 mt-2 leading-relaxed font-bold">${data.desc}</p>
+                        </div>
+                    </div>
+                    <div class="border-t border-slate-200 pt-4 flex items-center justify-between">
+                        <span class="text-xs font-bold text-[#69448E] bg-[#F0ECF5] px-2.5 py-1 rounded">${data.tag}</span>
+                        <span class="text-xs text-slate-500 font-extrabold">${data.pos}</span>
+                    </div>
+                </div>
+            `;
+            lucide.createIcons();
+            contentBox.style.opacity = '1';
+        }, 150);
+    }
+
+    let cart = [];
+
+    function toggleCart() {
+        const sidebar = document.getElementById('cart-sidebar');
+        const overlay = document.getElementById('cart-overlay');
+        const isOpen = !sidebar.classList.contains('translate-x-full');
+        
+        if (isOpen) {
+            sidebar.classList.add('translate-x-full');
+            overlay.classList.add('opacity-0');
+            setTimeout(() => overlay.classList.add('hidden'), 300);
+        } else {
+            overlay.classList.remove('hidden');
+            setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+            sidebar.classList.remove('translate-x-full');
+        }
+    }
+
+    function addToCart(id, name, price, img) {
+        const existingItem = cart.find(item => item.id === id);
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push({ id, name, price, img, quantity: 1 });
+        }
+        updateCartUI();
+        
+        const sidebar = document.getElementById('cart-sidebar');
+        const overlay = document.getElementById('cart-overlay');
+        sidebar.classList.remove('translate-x-full');
+        overlay.classList.remove('hidden');
+        setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+    }
+
+    function changeQuantity(id, delta) {
+        const item = cart.find(item => item.id === id);
+        if (item) {
+            item.quantity += delta;
+            if (item.quantity <= 0) {
+                cart = cart.filter(i => i.id !== id);
+            }
+        }
+        updateCartUI();
+    }
+
+    function removeFromCart(id) {
+        cart = cart.filter(item => item.id !== id);
+        updateCartUI();
+    }
+
+    function updateCartUI() {
+        const itemsContainer = document.getElementById('cart-items');
+        const countBadge = document.getElementById('cart-count');
+        const totalSpan = document.getElementById('cart-total');
+
+        itemsContainer.innerHTML = '';
+
+        if (cart.length === 0) {
+            itemsContainer.innerHTML = `
+                <div id="empty-cart-state" class="text-center py-12 text-slate-500">
+                    <i data-lucide="shopping-bag" class="w-12 h-12 mx-auto mb-3 opacity-40"></i>
+                    <p class="font-bold">您的購物車目前是空的</p>
+                </div>
+            `;
+            countBadge.classList.add('hidden');
+            totalSpan.textContent = 'NT$ 0';
+        } else {
+            let total = 0;
+            let count = 0;
+
+            cart.forEach(item => {
+                total += item.price * item.quantity;
+                count += item.quantity;
+
+                const itemEl = document.createElement('div');
+                itemEl.className = 'flex items-center gap-4 bg-white p-3 rounded-xl border border-slate-200 shadow-sm';
+                itemEl.innerHTML = `
+                    <img src="${item.img}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg border">
+                    <div class="flex-1">
+                        <h4 class="text-xs font-black text-slate-800">${item.name}</h4>
+                        <p class="text-[10px] text-slate-500 font-bold">NT$ ${item.price}</p>
+                        <div class="flex items-center gap-2 mt-1">
+                            <button onclick="changeQuantity('${item.id}', -1)" class="w-5 h-5 rounded bg-slate-100 flex items-center justify-center text-slate-800 font-bold text-xs">-</button>
+                            <span class="text-xs font-bold w-4 text-center">${item.quantity}</span>
+                            <button onclick="changeQuantity('${item.id}', 1)" class="w-5 h-5 rounded bg-slate-100 flex items-center justify-center text-slate-800 font-bold text-xs">+</button>
+                        </div>
+                    </div>
+                    <button onclick="removeFromCart('${item.id}')" class="text-slate-400 hover:text-red-500 transition-colors p-1">
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                    </button>
+                `;
+                itemsContainer.appendChild(itemEl);
+            });
+
+            countBadge.textContent = count;
+            countBadge.classList.remove('hidden');
+            totalSpan.textContent = `NT$ ${total.toLocaleString()}`;
+        }
+        lucide.createIcons();
+    }
+</script>
+</body>
+</html>
