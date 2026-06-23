@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html class="scroll-smooth" lang="zh-TW">
 <head>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#69448E">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="塭內生態">
+<link rel="apple-touch-icon" href="icon-192.png">
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-L159CSCTDP"></script>
 <script>
@@ -818,6 +824,15 @@
             totalSpan.textContent = `NT$ ${total.toLocaleString()}`;
         }
         lucide.createIcons();
+    }
+</script>
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js')
+                .then(reg => console.log('Service Worker 註冊成功'))
+                .catch(err => console.log('註冊失敗', err));
+        });
     }
 </script>
 </body>
