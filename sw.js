@@ -1,7 +1,8 @@
 const CACHE_NAME = 'wennei-pwa-v1';
+// 請確保這些路徑都加上了 /Wunai-Website-Part-2/
 const ASSETS = [
-  '/',
-  '/index.html'
+  '/Wunai-Website-Part-2/',
+  '/Wunai-Website-Part-2/index.html'
 ];
 
 self.addEventListener('install', (event) => {
