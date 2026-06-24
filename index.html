@@ -826,10 +826,11 @@
         lucide.createIcons();
     }
 </script>
-<script>
+    <script>
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/sw.js')
+            // 關鍵路徑設定，確保指向正確的專案資料夾
+            navigator.serviceWorker.register('/Wunai-Website-Part-2/sw.js')
                 .then(reg => console.log('Service Worker 註冊成功'))
                 .catch(err => console.log('註冊失敗', err));
         });
